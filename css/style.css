@@ -8,26 +8,27 @@ a {
 }
 
 body {
-  /*background: red;*/
+  background: firebrick;
 }
 
 .wrap {
   /*background: gold;*/
   /*padding: .3em;*/
+  position: relative;
 }
 
 header {
   background: #F5F5F5;
-  /*height: 5em;*/
   padding: .5em;
   text-align: center;
+  margin-top: 20vh;
 }
 
 .title {
   /*padding: 0;*/
   /*background: red;*/
   font-size: 2.4em;
-  margin-bottom: .3em;
+  /*margin-bottom: .3em;*/
 }
 
 .searchInput {
@@ -35,6 +36,9 @@ header {
   border: none;
   border-bottom: 1px solid black;
   outline: none;
+  text-align: center;
+
+  margin: 1em 0;
 }
 
 .searchInput,
@@ -43,6 +47,11 @@ header {
 .searchInput:-ms-input-placeholder, /* IE 10+ */
 .searchInput:-moz-placeholder { /* Firefox 18- */
   color: black;
+}
+
+.submitBtn {
+  display: block;
+  margin: 0 auto;
 }
 
 
