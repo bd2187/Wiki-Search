@@ -5,7 +5,7 @@ var searchInput = document.querySelector('.searchInput');
 var ulEl = document.querySelector('ul');
 var searchResults;
 
-// form submit not working in Safari
+
 formEl.addEventListener('submit', requestWiki);
 
 function requestWiki(evt) {
