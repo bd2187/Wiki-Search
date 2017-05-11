@@ -6,17 +6,23 @@
     <title>Wiki Search</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body>
     <div class="wrap"> <!-- .wrap -->
       <header class="clearfix">
         <h1 class="title">Wiki Search</h1>
-        <form>
+        <form id="form1">
           <input class="searchInput" type="search" placeholder="Search Wikipedia">
           </input>
           <div class="buttons"> <!-- .buttons-->
-            <input class ="submitBtn" type="submit" value="Search"></input>
-            <!-- <button>Random</button>-->
+            <!-- <input class ="submitBtn" type="submit"></input> -->
+            <button type="submit" form="form1">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <button>
+              <i class="fa fa-random" aria-hidden="true"></i>
+            </button>
           </div> <!-- /.buttons-->
         </form>
       </header>

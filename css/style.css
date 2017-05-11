@@ -8,7 +8,7 @@ a {
 }
 
 body, html {
-  background: firebrick;
+  background: #F5F5F5;
   /*height: 100vh;*/
 }
 
@@ -78,7 +78,8 @@ p {
 
 .moveHeaderToTop { /* moves header after 'keup' event */
   margin-top: 0;
-  background: #F5F5F5;
+  /*background: #F5F5F5;*/
+  background: firebrick;
   text-align: left;
 
   font-size: .8em;
@@ -91,7 +92,7 @@ p {
 }
 
 .fltLeft {
-  /*background: blue;*/
+  background: blue;
   /*color: red;*/
   float: left;
 }
@@ -102,7 +103,7 @@ p {
 
 .widthEighty {
   width: 80%;
-  text-align: center;
+  text-align: left;
 }
 
 .clearfix::after {
