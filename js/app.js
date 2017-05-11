@@ -1,11 +1,13 @@
+"use strict"
+
 var formEl = document.querySelector('form');
 var searchInput = document.querySelector('.searchInput');
 var ulEl = document.querySelector('ul');
 var searchResults;
 
-formEl.addEventListener('submit', cb);
+formEl.addEventListener('submit', requestWiki);
 
-function cb(evt) {
+function requestWiki(evt) {
   evt.preventDefault(); // prevent page from refreshing
 
   var endpoint = `https://crossorigin.me/https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&srsearch=${searchInput.value}`;
@@ -13,25 +15,26 @@ function cb(evt) {
   return ajaxRequest(endpoint)
     .then( function(val){
       searchResults = val;
-      console.log(val);
-      displayResults();
+      iterateResults();
     } )
     .catch( function(err){
       console.log(err);
     } )
 }
 
-function displayResults() {
+function iterateResults() {
+  var resultsArr = searchResults.query.search;
+
   ulEl.innerHTML = ''; // erase any existing content in <ul></ul>
-  return searchResults.query.search.map(domManip)
+  return resultsArr.map(displayResults);
 
 }
 
-function domManip(item) {
+function displayResults(result) {
   var liEl = document.createElement('li');
 
-  var title = item.title;
-  var snippet = item.snippet;
+  var title = result.title;
+  var snippet = result.snippet;
   var insertUnderscore = title.replace(' ', '_');
   var pageLink = `https://en.wikipedia.org/wiki/${insertUnderscore}`;
 
