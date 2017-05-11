@@ -5,8 +5,26 @@ var searchInput = document.querySelector('.searchInput');
 var ulEl = document.querySelector('ul');
 var searchResults;
 
-
 formEl.addEventListener('submit', requestWiki);
+searchInput.addEventListener('keyup', moveHeader);
+
+function moveHeader() {
+  var headerEl = document.querySelector('header');
+  var titleEl = document.querySelector('.title');
+  var buttons = document.querySelector('.buttons');
+  var elementsArr = [titleEl, buttons, searchInput, formEl];
+
+  titleEl.textContent = "WS";
+  function convertToInlineBlk(element) {
+    return element.classList.add('displayInlineBlk');
+  }
+
+  headerEl.classList.add('moveHeaderToTop');
+  titleEl.classList.add('fltLeft', 'widthTwenty');
+  formEl.classList.add('fltLeft', 'widthEighty');
+
+  return elementsArr.map(convertToInlineBlk);
+}
 
 function requestWiki(evt) {
   evt.preventDefault(); // prevent page from refreshing
