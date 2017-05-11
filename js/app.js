@@ -22,6 +22,7 @@ function moveHeader() {
   headerEl.classList.add('moveHeaderToTop');
   titleEl.classList.add('fltLeft', 'widthTwenty');
   formEl.classList.add('fltLeft', 'widthEighty');
+  searchInput.classList.add('updatedSearchInput');
 
   return elementsArr.map(convertToInlineBlk);
 }
