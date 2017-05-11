@@ -54,7 +54,7 @@ function displayResults(result) {
   var liEl = document.createElement('li');
   var title = result.title;
   var snippet = result.snippet;
-  var insertUnderscore = title.replace(' ', '_');
+  var insertUnderscore = title.replace(/ /g, '_');
   var pageLink = `https://en.wikipedia.org/wiki/${insertUnderscore}`;
 
   ulEl.appendChild(liEl);
