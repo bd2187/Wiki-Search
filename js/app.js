@@ -5,12 +5,13 @@ var searchInput = document.querySelector('.searchInput');
 var ulEl = document.querySelector('ul');
 var searchResults;
 
+// form submit not working in Safari
 formEl.addEventListener('submit', requestWiki);
 
 function requestWiki(evt) {
   evt.preventDefault(); // prevent page from refreshing
 
-  var endpoint = `https://crossorigin.me/https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&srsearch=${searchInput.value}`;
+  var endpoint = `https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&srsearch=${searchInput.value}&origin=*`;
 
   return ajaxRequest(endpoint)
     .then( function(val){
@@ -38,7 +39,7 @@ function displayResults(result) {
   var pageLink = `https://en.wikipedia.org/wiki/${insertUnderscore}`;
 
   ulEl.appendChild(liEl);
-  
+
   return liEl.innerHTML = `
     <a href=${pageLink} target="_blank">${title}</a>
     <p>${snippet}</p>

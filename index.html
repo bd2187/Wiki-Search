@@ -3,30 +3,35 @@
   <head>
     <meta charset="UTF-8">
     <title>Wiki Search</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <header>
-      <form>
-        <input class="searchInput" type="search" placeholder="Search Wikipedia">
-        </input>
-        <input type="submit" value="Search"></input>
-      </form>
-    </header>
+    <div class="wrap"> <!-- .wrap -->
+      <header>
+        <h1 class="title">Wiki Search</h1>
+        <form>
+          <input class="searchInput" type="search" placeholder="Search Wikipedia">
+          </input>
+          <input type="submit" value="Search"></input>
+        </form>
+      </header>
 
-    <section>
-      <!-- <ul> will populate based on search results. Check displayResults() in js/app.js-->
-      <ul>
-        <!--
-          <li>
-            <a href="#">Title</>
-            <p>Snippet</p>
-          </li>
-        -->
-      </ul>
-    </section>
+      <section>
+        <!-- <ul> will populate based on search results. Check displayResults() in js/app.js-->
+        <ul>
+          <!--
+            <li>
+              <a href="#">Title</>
+              <p>Snippet</p>
+            </li>
+          -->
+        </ul>
+      </section>
 
-    <footer>
-    </footer>
+      <footer>
+      </footer>
+    </div> <!-- /.wrap -->
 
     <script src="js/app.js"></script>
   </body>

@@ -17,15 +17,43 @@ body {
 }
 
 header {
-  background: blue;
-  height: 5em;
-  padding: .4em;
+  background: #F5F5F5;
+  /*height: 5em;*/
+  padding: .5em;
   text-align: center;
 }
 
+.title {
+  /*padding: 0;*/
+  /*background: red;*/
+  font-size: 2.4em;
+  margin-bottom: .3em;
+}
+
+.searchInput {
+  background: none;
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+}
+
+.searchInput,
+.searchInput::-webkit-input-placeholder, /* Chrome/Opera/Safari */
+.searchInput::-moz-placeholder, /* Firefox 19+ */
+.searchInput:-ms-input-placeholder, /* IE 10+ */
+.searchInput:-moz-placeholder { /* Firefox 18- */
+  color: black;
+}
+
+
 li {
-  background: gold;
+  background: #B2B2B2;
   padding: 1em;
+  border-top: 1px solid black;
+}
+
+li:last-child {
+  border-bottom: 1px solid black;
 }
 
 a {
