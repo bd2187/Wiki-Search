@@ -26,7 +26,8 @@ const mod = ( function(){
   }
 
   const iterateSearchResults = function iterateSearchResults() {
-    var resultsArr = searchResults.query.search; // array of results
+    // Array of results:
+    var resultsArr = searchResults.query.search;
 
     // erase any existing content in <ul></ul>
     ulEl.innerHTML = '';
@@ -36,14 +37,14 @@ const mod = ( function(){
   }
 
   const displayResults = function displayResults(result) {
-    var liEl             = document.createElement('li');
-    var title            = result.title;
-    var snippet          = result.snippet;
+    var title            = result.title; // Wiki Article Title
+    var snippet          = result.snippet; // Wiki Paragraph Snippet
     // Replace any spaces with an underscore for url compatibility
     var insertUnderscore = title.replace(/ /g, '_');
     var pageLink         = `https://en.wikipedia.org/wiki/${insertUnderscore}`;
 
     // Add <li></li> to <ul></ul>
+    var liEl = document.createElement('li');
     ulEl.appendChild(liEl);
 
     /*<li>*/
