@@ -57,7 +57,7 @@ p {
   margin: 1em 0;
   line-height: 1.2;
 
-  width: 55%;
+  width: 12.444em; /*199.11px / 16px = 12.444em*/
 
   font-family: 'Roboto', sans-serif;
   font-size: 1.112em;
@@ -88,8 +88,6 @@ p {
 li {
   background: #E8E8E8;
   padding: 1em;
-  /*border-top: 1px solid black;
-  border-bottom: 1px solid black;*/
   margin-bottom: .5em;
 }
 
@@ -154,7 +152,7 @@ p {
 
 .updatedSearchInput {
   text-align: left;
-  margin-right: 1em;
+  /*margin-right: 1em;*/
   max-width:  401.69px;
 }
 
@@ -162,4 +160,16 @@ p {
   content: " ";
   display: table;
   clear: both;
+}
+
+
+/*Media query*/
+@media screen and (min-width: 1020px) {
+  .title {
+    font-size: 4.2em;
+  }
+
+  .widthTwenty {
+    max-width: 100px;
+  }
 }
