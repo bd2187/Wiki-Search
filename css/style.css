@@ -7,6 +7,10 @@ a {
   margin: 0;
 }
 
+a {
+  color: inherit;
+}
+
 body, html {
   background: #F5F5F5;
   /*height: 100vh;*/
@@ -28,8 +32,8 @@ header {
   margin-top: 20vh;
 }
 
-a,
-.title {
+.title,
+.wikiLink {
   font-family: 'Lora', serif;
 }
 
@@ -93,7 +97,7 @@ li:last-child {
   border-bottom: 0;
 }
 
-a {
+.wikiLink {
   font-size: 1.6em;
   color: #053B69;
   text-decoration: none;
@@ -101,7 +105,7 @@ a {
   margin-bottom: .3em;
 }
 
-a:hover {
+.wikiLink:hover {
   color: #968713;
   -webkit-transition: all .3s;
   -moz-transition: all .3s;

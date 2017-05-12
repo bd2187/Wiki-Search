@@ -3,6 +3,7 @@
 var formEl = document.querySelector('form');
 var searchInput = document.querySelector('.searchInput');
 var ulEl = document.querySelector('ul');
+var randomEl = document.querySelector('.random');
 var searchResults;
 
 formEl.addEventListener('submit', requestWiki);
@@ -44,10 +45,8 @@ function requestWiki(evt) {
 
 function iterateResults() {
   var resultsArr = searchResults.query.search;
-
   ulEl.innerHTML = ''; // erase any existing content in <ul></ul>
   return resultsArr.map(displayResults);
-
 }
 
 function displayResults(result) {
@@ -60,7 +59,7 @@ function displayResults(result) {
   ulEl.appendChild(liEl);
 
   return liEl.innerHTML = `
-    <a href=${pageLink} target="_blank">${title}</a>
+    <a class="wikiLink" href=${pageLink} target="_blank">${title}</a>
     <p>${snippet}</p>
   `
 }
