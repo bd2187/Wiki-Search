@@ -40,7 +40,7 @@ function requestWiki(evt) {
     } )
     .catch( function(err){
       console.log(err);
-    } )
+    } );
 }
 
 function iterateResults() {
