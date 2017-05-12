@@ -1,84 +1,110 @@
 "use strict"
 
-var formEl = document.querySelector('form');
-var searchInput = document.querySelector('.searchInput');
-var ulEl = document.querySelector('ul');
-var randomEl = document.querySelector('.random');
-var searchResults;
+const mod = ( function(){
+  var formEl        = document.querySelector('form');
+  var searchInput   = document.querySelector('.searchInput');
+  var ulEl          = document.querySelector('ul');
+  var randomEl      = document.querySelector('.random');
+  var searchResults;
 
-formEl.addEventListener('submit', requestWiki);
-searchInput.addEventListener('keyup', moveHeader);
+  const requestWiki = function requestWiki(evt) {
+    evt.preventDefault(); // prevent page from default refresh
 
-function moveHeader() {
-  var headerEl = document.querySelector('header');
-  var titleEl = document.querySelector('.title');
-  var buttons = document.querySelector('.buttons');
-  var elementsArr = [titleEl, buttons, searchInput, formEl];
+    // MediaWiki API
+    var endpoint = `https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&srsearch=${searchInput.value}&origin=*`;
 
-  titleEl.textContent = "WS";
-  function convertToInlineBlk(element) {
-    return element.classList.add('displayInlineBlk');
+    // Make AJAX call
+    return ajaxRequest(endpoint)
+      .then( function(val){
+        // Store object in sesarchResults
+        searchResults = val;
+        iterateSearchResults();
+      } )
+      .catch( function(err){
+        console.log(err);
+      } );
   }
 
-  headerEl.classList.add('moveHeaderToTop');
-  titleEl.classList.add('fltLeft', 'widthTwenty');
-  formEl.classList.add('fltLeft', 'widthEighty');
-  searchInput.classList.add('updatedSearchInput');
+  const iterateSearchResults = function iterateSearchResults() {
+    var resultsArr = searchResults.query.search; // array of results
 
-  return elementsArr.map(convertToInlineBlk);
-}
+    // erase any existing content in <ul></ul>
+    ulEl.innerHTML = '';
 
-function requestWiki(evt) {
-  evt.preventDefault(); // prevent page from refreshing
+    // Iterate through resultsArr. For each result, store them in an <li> tag.
+    return resultsArr.map(displayResults);
+  }
 
-  var endpoint = `https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&srsearch=${searchInput.value}&origin=*`;
+  const displayResults = function displayResults(result) {
+    var liEl             = document.createElement('li');
+    var title            = result.title;
+    var snippet          = result.snippet;
+    // Replace any spaces with an underscore for url compatibility
+    var insertUnderscore = title.replace(/ /g, '_');
+    var pageLink         = `https://en.wikipedia.org/wiki/${insertUnderscore}`;
 
-  return ajaxRequest(endpoint)
-    .then( function(val){
-      searchResults = val;
-      iterateResults();
-    } )
-    .catch( function(err){
-      console.log(err);
-    } );
-}
+    // Add <li></li> to <ul></ul>
+    ulEl.appendChild(liEl);
 
-function iterateResults() {
-  var resultsArr = searchResults.query.search;
-  ulEl.innerHTML = ''; // erase any existing content in <ul></ul>
-  return resultsArr.map(displayResults);
-}
+    /*<li>*/
+    return liEl.innerHTML = `
+      <a class="wikiLink" href=${pageLink} target="_blank">${title}</a>
+      <p>${snippet}</p>
+    `
+    /*</li>*/
+  }
 
-function displayResults(result) {
-  var liEl = document.createElement('li');
-  var title = result.title;
-  var snippet = result.snippet;
-  var insertUnderscore = title.replace(/ /g, '_');
-  var pageLink = `https://en.wikipedia.org/wiki/${insertUnderscore}`;
+  // CB for searInput eventListener. Position header to the top of viewport
+  const moveHeader = function moveHeader() {
+    var headerEl    = document.querySelector('header');
+    var titleEl     = document.querySelector('.title');
+    var buttons     = document.querySelector('.buttons');
+    var elementsArr = [titleEl, buttons, searchInput, formEl];
 
-  ulEl.appendChild(liEl);
+    // Add classes that adjust styling
+    headerEl.classList.add('moveHeaderToTop');
+    titleEl.classList.add('fltLeft', 'widthTwenty');
+    formEl.classList.add('fltLeft', 'widthEighty');
+    searchInput.classList.add('updatedSearchInput');
 
-  return liEl.innerHTML = `
-    <a class="wikiLink" href=${pageLink} target="_blank">${title}</a>
-    <p>${snippet}</p>
-  `
-}
+    // Replace "Wiki-Search" with "WS"
+    titleEl.textContent = "WS";
 
-function ajaxRequest(url) {
-  return new Promise( function(resolve, reject){
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", url);
-    xhr.onload = handleData;
-
-    function handleData() {
-      if (xhr.status === 200 && xhr.readyState === 4) {
-        var data = JSON.parse(xhr.responseText);
-        return resolve ( data );
-      } else {
-        return reject( /*...*/ );
-      }
+    function convertToInlineBlk(element) {
+      return element.classList.add('displayInlineBlk');
     }
 
-  xhr.send();
-  } )
-}
+    // Iterate through elementsArr and give it "display: inline-block"
+    return elementsArr.map(convertToInlineBlk);
+  }
+
+  const ajaxRequest = function ajaxRequest(url) {
+    return new Promise( function(resolve, reject){
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", url);
+      xhr.onload = handleData;
+      xhr.send();
+
+      function handleData() {
+        if (xhr.status === 200 && xhr.readyState === 4) {
+          var data = JSON.parse(xhr.responseText);
+          return resolve ( data );
+        } else {
+          return reject( xhr.statusText );
+        }
+      }
+    } );
+  }
+
+  return {
+    formElListener() {
+      return formEl.addEventListener('submit', requestWiki);
+    },
+    searchInputListener() {
+      return searchInput.addEventListener('keyup', moveHeader);
+    }
+  }
+} )();
+
+mod.formElListener();
+mod.searchInputListener();
