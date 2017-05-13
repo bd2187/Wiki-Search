@@ -44,13 +44,14 @@ p {
 }
 
 .searchInput {
-  background: none;
+  background-color: inherit;
   border: none;
-  border-bottom: 1px solid #1C1C1C;
+  border-bottom: 1.3px solid #1C1C1C;
   outline: none;
   text-align: center;
 
   margin: 1em 0;
+  padding-bottom: .12em;
   line-height: 1.2;
 
   width: 12.444em; /*199.11px / 16px = 12.444em*/
