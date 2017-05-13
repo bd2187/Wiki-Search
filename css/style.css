@@ -45,16 +45,11 @@ p {
 
 .searchInput {
   background-color: inherit;
-  /*border: none;*/
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
-  border-bottom: 1.3px solid #1C1C1C;
   outline: none;
   text-align: center;
 
   margin: 1em 0;
-  padding-bottom: .12em;
+  padding: .3em;
   line-height: 1.2;
 
   width: 12.444em; /*199.11px / 16px = 12.444em*/
