@@ -15,6 +15,11 @@ body, html {
   background: #F5F5F5;
 }
 
+input {
+  border-radius: 0;
+  -webkit-border-radius: 0;
+}
+
 .wrap {
   position: relative;
   width: 100%;
@@ -56,9 +61,6 @@ p {
 
   font-family: 'Roboto', sans-serif;
   font-size: 1.112em;
-
-  border-radius: 0;
-  -webkit-border-radius: 0;
 }
 
 .submitBtn,
