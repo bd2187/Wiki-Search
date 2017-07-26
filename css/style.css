@@ -123,6 +123,7 @@ p {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
+  min-width: 375px;
 }
 
 .displayInlineBlk {
