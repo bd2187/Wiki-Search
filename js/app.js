@@ -69,7 +69,8 @@ const mod = ( function(){
     searchInput.classList.add('updatedSearchInput');
 
     // Replace "Wiki-Search" with "WS"
-    titleEl.textContent = "WS";
+    // titleEl.textContent = "WS";
+    titleEl.innerHTML = '<a href="https://bd2187.github.io/Wiki-Search/">WS</a>';
 
     function convertToInlineBlk(element) {
       return element.classList.add('displayInlineBlk');
