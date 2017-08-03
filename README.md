@@ -1,3 +1,21 @@
-FCC Wikipedia Search
+<h1>Wiki-Search</h1>
+<a href="https://bd2187.github.io/Wiki-Search/">
+  Demo
+</a>
+<br />
+<br />
 
-The application utilizes the MediaWiki API. The user types a desired category in the search bar, and the webpage will display Wikipedia articles closely related to the user's desired category. The user can also click the 'random' link which will generate a random Wikipedia article for the user.
+<h2>Built with:</h2>
+<ul>
+  <li>Vanilla JavaScript</li>
+  <li>ES6</li>
+  <li>SCSS</li>
+</ul>
+
+<h2>Users Can:</h2>
+<ul>
+  <li>Search Wikipedia entries in a search box and see the resulting entries</li>
+  <li>Click a button to see a random Wikipedia entry.</li>
+</ul>
+
+![alt text](https://media.giphy.com/media/jzEOcg2mN0O1G/giphy.gif)
